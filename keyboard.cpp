@@ -41,20 +41,23 @@ Keyboard::Keyboard(QWidget *parent) :
   Num9Key("9"),
   Num0Key("0"),
   HyphenKey("-"),
-  EqualKey("=")
+  EqualKey("="),
+  SpaceKey(" "),
+  ShiftKey1("Left Shift"),
+  ShiftKey2("Right Shift")
 {
-//  layout.addWidget(&Num1Key,0,0,2,2);
-//  layout.addWidget(&Num2Key,0,2,2,2);
-//  layout.addWidget(&Num3Key,0,4,2,2);
-//  layout.addWidget(&Num4Key,0,6,2,2);
-//  layout.addWidget(&Num5Key,0,8,2,2);
-//  layout.addWidget(&Num6Key,0,10,2,2);
-//  layout.addWidget(&Num7Key,0,12,2,2);
-//  layout.addWidget(&Num8Key,0,14,2,2);
-//  layout.addWidget(&Num9Key,0,16,2,2);
-//  layout.addWidget(&Num0Key,0,18,2,2);
-//  layout.addWidget(&HyphenKey,0,20,2,2);
-//  layout.addWidget(&EqualKey,0,22,2,2);
+  layout.addWidget(&Num1Key,0,0,2,2);
+  layout.addWidget(&Num2Key,0,2,2,2);
+  layout.addWidget(&Num3Key,0,4,2,2);
+  layout.addWidget(&Num4Key,0,6,2,2);
+  layout.addWidget(&Num5Key,0,8,2,2);
+  layout.addWidget(&Num6Key,0,10,2,2);
+  layout.addWidget(&Num7Key,0,12,2,2);
+  layout.addWidget(&Num8Key,0,14,2,2);
+  layout.addWidget(&Num9Key,0,16,2,2);
+  layout.addWidget(&Num0Key,0,18,2,2);
+  layout.addWidget(&HyphenKey,0,20,2,2);
+  layout.addWidget(&EqualKey,0,22,2,2);
 
   layout.addWidget(&QKey,2,1,2,2);
   layout.addWidget(&WKey,2,3,2,2);
@@ -84,6 +87,11 @@ Keyboard::Keyboard(QWidget *parent) :
   layout.addWidget(&BKey,6,11,2,2);
   layout.addWidget(&NKey,6,13,2,2);
   layout.addWidget(&MKey,6,15,2,2);
+
+  layout.addWidget(&SpaceKey,8,6,2,10);
+  layout.addWidget(&ShiftKey1,6,0,2,3);
+  layout.addWidget(&ShiftKey2,6,18,2,3);
+
 
 
   this->setLayout(&layout);

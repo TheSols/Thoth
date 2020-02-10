@@ -57,6 +57,10 @@ private:
   KeyboardButton HyphenKey;
   KeyboardButton EqualKey;
 
+  KeyboardButton SpaceKey;
+  KeyboardButton ShiftKey1;
+  KeyboardButton ShiftKey2;
+
 public:
   Keyboard(QWidget *parent = nullptr);
 
