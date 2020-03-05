@@ -5,16 +5,35 @@
 #include <QPushButton>
 #include <QGridLayout>
 
+#include "shiftsignal.h"
+
 class KeyboardButton : public QPushButton  {
+  Q_OBJECT
   QString letter;
+  QString alternate;
+
+protected:
+  ShiftSignal &shift;
+
 public:
-  KeyboardButton(QString letter);
+  KeyboardButton(QString letter, QString alt, ShiftSignal &shift);
+  Q_SLOT
+  void shiftToggled();
+};
+
+class ShiftButton : public KeyboardButton{
+  Q_OBJECT
+public:
+  ShiftButton(QString s1, QString s2, ShiftSignal &shift);
+  Q_SLOT
+  void onShift();
 };
 
 class Keyboard : public QWidget
 {
   QGridLayout layout;
-private:
+  ShiftSignal shift;
+
   KeyboardButton QKey;
   KeyboardButton WKey;
   KeyboardButton EKey;
@@ -63,8 +82,6 @@ private:
 
 public:
   Keyboard(QWidget *parent = nullptr);
-
-signals:
 
 };
 

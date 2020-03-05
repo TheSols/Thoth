@@ -1,50 +1,51 @@
-#include "keyboard.h"
+﻿#include "keyboard.h"
 
 Keyboard::Keyboard(QWidget *parent) :
-  QKey("Q"),
-  WKey("W"),
-  EKey("E"),
-  RKey("R"),
-  TKey("T"),
-  YKey("Y"),
-  UKey("U"),
-  IKey("I"),
-  OKey("O"),
-  PKey("P"),
+  QWidget(parent),
+  QKey("q","Q", shift),
+  WKey("w","W", shift),
+  EKey("e","E", shift),
+  RKey("r","R", shift),
+  TKey("t","T", shift),
+  YKey("y","Y", shift),
+  UKey("u","U", shift),
+  IKey("i","I", shift),
+  OKey("o","O", shift),
+  PKey("p","P", shift),
 
-  AKey("A"),
-  SKey("S"),
-  DKey("D"),
-  FKey("F"),
-  GKey("G"),
-  HKey("H"),
-  JKey("J"),
-  KKey("K"),
-  LKey("L"),
+  AKey("a","A", shift),
+  SKey("s","S", shift),
+  DKey("d","D", shift),
+  FKey("f","F", shift),
+  GKey("g","G", shift),
+  HKey("h","H", shift),
+  JKey("j","J", shift),
+  KKey("k","K", shift),
+  LKey("l","L", shift),
 
-  ZKey("Z"),
-  XKey("X"),
-  CKey("C"),
-  VKey("V"),
-  BKey("B"),
-  NKey("N"),
-  MKey("M"),
+  ZKey("z","Z", shift),
+  XKey("x","X", shift),
+  CKey("v","C", shift),
+  VKey("v","V", shift),
+  BKey("b","B", shift),
+  NKey("n","N", shift),
+  MKey("m","M", shift),
 
-  Num1Key("1"),
-  Num2Key("2"),
-  Num3Key("3"),
-  Num4Key("4"),
-  Num5Key("5"),
-  Num6Key("6"),
-  Num7Key("7"),
-  Num8Key("8"),
-  Num9Key("9"),
-  Num0Key("0"),
-  HyphenKey("-"),
-  EqualKey("="),
-  SpaceKey(" "),
-  ShiftKey1("Left Shift"),
-  ShiftKey2("Right Shift")
+  Num1Key("1","!",shift),
+  Num2Key("2","@",shift),
+  Num3Key("3","#",shift),
+  Num4Key("4","$",shift),
+  Num5Key("5","%",shift),
+  Num6Key("6","^",shift),
+  Num7Key("7","&",shift),
+  Num8Key("8","*",shift),
+  Num9Key("9","(",shift),
+  Num0Key("0",")",shift),
+  HyphenKey("-","_",shift),
+  EqualKey("=","+",shift),
+  SpaceKey(" "," ",shift),
+  ShiftKey1("Left Shift", "L Shift", shift),
+  ShiftKey2("Right Shift", "R Shift", shift)
 {
   layout.addWidget(&Num1Key,0,0,2,2);
   layout.addWidget(&Num2Key,0,2,2,2);
@@ -97,8 +98,30 @@ Keyboard::Keyboard(QWidget *parent) :
   this->setLayout(&layout);
 }
 
-KeyboardButton::KeyboardButton(QString letter):
-  letter(letter)
+KeyboardButton::KeyboardButton(QString letter, QString alt, ShiftSignal &shift):
+  letter(letter),
+  alternate(alt),
+  shift(shift)
 {
-  this->setText(letter);
+  shiftToggled();
+}
+
+void KeyboardButton::shiftToggled()
+{
+  if(shift.shifted()){
+    this->setText(alternate);
+  } else {
+    this->setText(letter);
+  }
+}
+
+ShiftButton::ShiftButton(QString s1, QString s2, ShiftSignal &shift):
+  KeyboardButton(s1,s2,shift)
+{
+  connect(this, &QPushButton::pressed, this, &ShiftButton::onShift);
+}
+
+void ShiftButton::onShift()
+{
+  shift.toggle();
 }
