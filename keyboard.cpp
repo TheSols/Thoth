@@ -59,8 +59,8 @@ Keyboard::Keyboard(QWidget *parent) :
   EnterKey("ENTER","ENTER",shift),
 
   SpaceKey(" "," ",shift),
-  ShiftKey1("Left Shift", "L Shift", shift),
-  ShiftKey2("Right Shift", "R Shift", shift)
+  ShiftKey1("Shift", "Shift", shift),
+  ShiftKey2("Shift", "Shift", shift)
 
 {
   layout.addWidget(&TildeKey,0,0,2,2);

@@ -48,22 +48,22 @@ class Keyboard : public QWidget
   KeyButton Num8Key;
   KeyButton Num9Key;
   KeyButton Num0Key;
-  KeyButton HyphenKey;
-  KeyButton EqualKey;
+  SymbolButton HyphenKey;
+  SymbolButton EqualKey;
 
-  KeyButton TildeKey;
+  SymbolButton TildeKey;
   KeyButton BackspaceKey;
   KeyButton TabKey;
   CapsButton CapsKey;
-  KeyButton CommaKey;
-  KeyButton PeriodKey;
-  KeyButton ForwSlashKey;
-  KeyButton SemiColonKey;
-  KeyButton QuoteKey;
-  KeyButton OpenBracketKey;
-  KeyButton CloseBracketKey;
-  KeyButton BackSlashKey;
-  KeyButton EnterKey;
+  SymbolButton CommaKey;
+  SymbolButton PeriodKey;
+  SymbolButton ForwSlashKey;
+  SymbolButton SemiColonKey;
+  SymbolButton QuoteKey;
+  SymbolButton OpenBracketKey;
+  SymbolButton CloseBracketKey;
+  SymbolButton BackSlashKey;
+  SymbolButton EnterKey;
 
   KeyButton SpaceKey;
   ShiftButton ShiftKey1;

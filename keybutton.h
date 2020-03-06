@@ -15,7 +15,7 @@ protected:
   QString letter;
   QString alternate;
   ShiftSignal &shift;
-
+  void setHighlight(bool on);
 
 public:
   KeyButton(QString letter, QString alt, ShiftSignal &shift);
@@ -25,8 +25,22 @@ public:
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+class SymbolButton : public KeyButton{
+  Q_OBJECT
+  void onPressed();
+
+public:
+  SymbolButton(QString s1, QString s2, ShiftSignal &shift);
+  Q_SLOT
+  void shiftToggled() override;
+};
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 class LetterButton : public KeyButton{
   Q_OBJECT
+  void onPressed();
+
 public:
   LetterButton(QString s1, QString s2, ShiftSignal &shift);
   Q_SLOT
@@ -38,6 +52,7 @@ public:
 
 class ShiftButton : public KeyButton{
   Q_OBJECT
+  void shiftToggled();
 public:
   ShiftButton(QString s1, QString s2, ShiftSignal &shift);
   Q_SLOT
