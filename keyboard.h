@@ -1,84 +1,73 @@
 #ifndef KEYBOARD_H
 #define KEYBOARD_H
 
-#include <QWidget>
-#include <QPushButton>
-#include <QGridLayout>
+#include "keybutton.h"
 
-#include "shiftsignal.h"
-
-class KeyboardButton : public QPushButton  {
-  Q_OBJECT
-  QString letter;
-  QString alternate;
-
-protected:
-  ShiftSignal &shift;
-
-public:
-  KeyboardButton(QString letter, QString alt, ShiftSignal &shift);
-  Q_SLOT
-  void shiftToggled();
-};
-
-class ShiftButton : public KeyboardButton{
-  Q_OBJECT
-public:
-  ShiftButton(QString s1, QString s2, ShiftSignal &shift);
-  Q_SLOT
-  void onShift();
-};
 
 class Keyboard : public QWidget
 {
   QGridLayout layout;
   ShiftSignal shift;
 
-  KeyboardButton QKey;
-  KeyboardButton WKey;
-  KeyboardButton EKey;
-  KeyboardButton RKey;
-  KeyboardButton TKey;
-  KeyboardButton YKey;
-  KeyboardButton UKey;
-  KeyboardButton IKey;
-  KeyboardButton OKey;
-  KeyboardButton PKey;
+  KeyButton QKey;
+  KeyButton WKey;
+  KeyButton EKey;
+  KeyButton RKey;
+  KeyButton TKey;
+  KeyButton YKey;
+  KeyButton UKey;
+  KeyButton IKey;
+  KeyButton OKey;
+  KeyButton PKey;
 
-  KeyboardButton AKey;
-  KeyboardButton SKey;
-  KeyboardButton DKey;
-  KeyboardButton FKey;
-  KeyboardButton GKey;
-  KeyboardButton HKey;
-  KeyboardButton JKey;
-  KeyboardButton KKey;
-  KeyboardButton LKey;
+  KeyButton AKey;
+  KeyButton SKey;
+  KeyButton DKey;
+  KeyButton FKey;
+  KeyButton GKey;
+  KeyButton HKey;
+  KeyButton JKey;
+  KeyButton KKey;
+  KeyButton LKey;
 
-  KeyboardButton ZKey;
-  KeyboardButton XKey;
-  KeyboardButton CKey;
-  KeyboardButton VKey;
-  KeyboardButton BKey;
-  KeyboardButton NKey;
-  KeyboardButton MKey;
+  KeyButton ZKey;
+  KeyButton XKey;
+  KeyButton CKey;
+  KeyButton VKey;
+  KeyButton BKey;
+  KeyButton NKey;
+  KeyButton MKey;
 
-  KeyboardButton Num1Key;
-  KeyboardButton Num2Key;
-  KeyboardButton Num3Key;
-  KeyboardButton Num4Key;
-  KeyboardButton Num5Key;
-  KeyboardButton Num6Key;
-  KeyboardButton Num7Key;
-  KeyboardButton Num8Key;
-  KeyboardButton Num9Key;
-  KeyboardButton Num0Key;
-  KeyboardButton HyphenKey;
-  KeyboardButton EqualKey;
+  KeyButton Num1Key;
+  KeyButton Num2Key;
+  KeyButton Num3Key;
+  KeyButton Num4Key;
+  KeyButton Num5Key;
+  KeyButton Num6Key;
+  KeyButton Num7Key;
+  KeyButton Num8Key;
+  KeyButton Num9Key;
+  KeyButton Num0Key;
+  KeyButton HyphenKey;
+  KeyButton EqualKey;
 
-  KeyboardButton SpaceKey;
-  KeyboardButton ShiftKey1;
-  KeyboardButton ShiftKey2;
+  KeyButton TildeKey;
+  KeyButton BackspaceKey;
+  KeyButton TabKey;
+  KeyButton CapsKey;
+  KeyButton CommaKey;
+  KeyButton PeriodKey;
+  KeyButton ForwSlashKey;
+  KeyButton SemiColonKey;
+  KeyButton QuoteKey;
+  KeyButton OpenBracketKey;
+  KeyButton CloseBracketKey;
+  KeyButton BackSlashKey;
+  KeyButton EnterKey;
+
+  KeyButton SpaceKey;
+  ShiftButton ShiftKey1;
+  ShiftButton ShiftKey2;
 
 public:
   Keyboard(QWidget *parent = nullptr);

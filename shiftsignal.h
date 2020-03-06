@@ -9,12 +9,12 @@ class ShiftSignal : public QObject
   bool shift = false;
 
 public:
-  explicit ShiftSignal(QObject *parent = nullptr);
+  ShiftSignal(QObject *parent = nullptr);
   void setTrue();
   void setFalse();
   const bool& shifted();
   void toggle();
-  ~ShiftSignal(){};
+  ~ShiftSignal();;
 
 signals:
   void changed(bool shifted);

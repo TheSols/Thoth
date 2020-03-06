@@ -25,7 +25,7 @@ Keyboard::Keyboard(QWidget *parent) :
 
   ZKey("z","Z", shift),
   XKey("x","X", shift),
-  CKey("v","C", shift),
+  CKey("c","C", shift),
   VKey("v","V", shift),
   BKey("b","B", shift),
   NKey("n","N", shift),
@@ -43,85 +43,86 @@ Keyboard::Keyboard(QWidget *parent) :
   Num0Key("0",")",shift),
   HyphenKey("-","_",shift),
   EqualKey("=","+",shift),
+
+  TildeKey("`","~",shift),
+  BackspaceKey("BACKSPACE","BACKSPACE",shift),
+  TabKey("Tab","Tab",shift),
+  CapsKey("CAPS LOCK","CAPS LOCK",shift),
+  CommaKey(",","<",shift),
+  PeriodKey(".",">",shift),
+  ForwSlashKey("/","?",shift),
+  SemiColonKey(";",":",shift),
+  QuoteKey("'","\"",shift),
+  OpenBracketKey("[","{",shift),
+  CloseBracketKey("]","}",shift),
+  BackSlashKey("\\","|",shift),
+  EnterKey("ENTER","ENTER",shift),
+
   SpaceKey(" "," ",shift),
   ShiftKey1("Left Shift", "L Shift", shift),
   ShiftKey2("Right Shift", "R Shift", shift)
+
 {
-  layout.addWidget(&Num1Key,0,0,2,2);
-  layout.addWidget(&Num2Key,0,2,2,2);
-  layout.addWidget(&Num3Key,0,4,2,2);
-  layout.addWidget(&Num4Key,0,6,2,2);
-  layout.addWidget(&Num5Key,0,8,2,2);
-  layout.addWidget(&Num6Key,0,10,2,2);
-  layout.addWidget(&Num7Key,0,12,2,2);
-  layout.addWidget(&Num8Key,0,14,2,2);
-  layout.addWidget(&Num9Key,0,16,2,2);
-  layout.addWidget(&Num0Key,0,18,2,2);
-  layout.addWidget(&HyphenKey,0,20,2,2);
-  layout.addWidget(&EqualKey,0,22,2,2);
+  layout.addWidget(&TildeKey,0,0,2,2);
+  layout.addWidget(&Num1Key,0,2,2,2);
+  layout.addWidget(&Num2Key,0,4,2,2);
+  layout.addWidget(&Num3Key,0,6,2,2);
+  layout.addWidget(&Num4Key,0,8,2,2);
+  layout.addWidget(&Num5Key,0,10,2,2);
+  layout.addWidget(&Num6Key,0,12,2,2);
+  layout.addWidget(&Num7Key,0,14,2,2);
+  layout.addWidget(&Num8Key,0,16,2,2);
+  layout.addWidget(&Num9Key,0,18,2,2);
+  layout.addWidget(&Num0Key,0,20,2,2);
+  layout.addWidget(&HyphenKey,0,22,2,2);
+  layout.addWidget(&EqualKey,0,24,2,2);
+  layout.addWidget(&BackspaceKey,0,26,2,4);
 
-  layout.addWidget(&QKey,2,1,2,2);
-  layout.addWidget(&WKey,2,3,2,2);
-  layout.addWidget(&EKey,2,5,2,2);
-  layout.addWidget(&RKey,2,7,2,2);
-  layout.addWidget(&TKey,2,9,2,2);
-  layout.addWidget(&YKey,2,11,2,2);
-  layout.addWidget(&UKey,2,13,2,2);
-  layout.addWidget(&IKey,2,15,2,2);
-  layout.addWidget(&OKey,2,17,2,2);
-  layout.addWidget(&PKey,2,19,2,2);
+  layout.addWidget(&TabKey,2,0,2,3);
+  layout.addWidget(&QKey,2,3,2,2);
+  layout.addWidget(&WKey,2,5,2,2);
+  layout.addWidget(&EKey,2,7,2,2);
+  layout.addWidget(&RKey,2,9,2,2);
+  layout.addWidget(&TKey,2,11,2,2);
+  layout.addWidget(&YKey,2,13,2,2);
+  layout.addWidget(&UKey,2,15,2,2);
+  layout.addWidget(&IKey,2,17,2,2);
+  layout.addWidget(&OKey,2,19,2,2);
+  layout.addWidget(&PKey,2,21,2,2);
+  layout.addWidget(&OpenBracketKey,2,23,2,2);
+  layout.addWidget(&CloseBracketKey,2,25,2,2);
+  layout.addWidget(&BackSlashKey,2,27,2,3);
 
-  layout.addWidget(&AKey,4,2,2,2);
-  layout.addWidget(&SKey,4,4,2,2);
-  layout.addWidget(&DKey,4,6,2,2);
-  layout.addWidget(&FKey,4,8,2,2);
-  layout.addWidget(&GKey,4,10,2,2);
-  layout.addWidget(&HKey,4,12,2,2);
-  layout.addWidget(&JKey,4,14,2,2);
-  layout.addWidget(&KKey,4,16,2,2);
-  layout.addWidget(&LKey,4,18,2,2);
+  layout.addWidget(&CapsKey,4,0,2,4);
+  layout.addWidget(&AKey,4,4,2,2);
+  layout.addWidget(&SKey,4,6,2,2);
+  layout.addWidget(&DKey,4,8,2,2);
+  layout.addWidget(&FKey,4,10,2,2);
+  layout.addWidget(&GKey,4,12,2,2);
+  layout.addWidget(&HKey,4,14,2,2);
+  layout.addWidget(&JKey,4,16,2,2);
+  layout.addWidget(&KKey,4,18,2,2);
+  layout.addWidget(&LKey,4,20,2,2);
+  layout.addWidget(&SemiColonKey,4,22,2,2);
+  layout.addWidget(&QuoteKey,4,24,2,2);
+  layout.addWidget(&EnterKey,4,26,2,4);
 
-  layout.addWidget(&ZKey,6,3,2,2);
-  layout.addWidget(&XKey,6,5,2,2);
-  layout.addWidget(&CKey,6,7,2,2);
-  layout.addWidget(&VKey,6,9,2,2);
-  layout.addWidget(&BKey,6,11,2,2);
-  layout.addWidget(&NKey,6,13,2,2);
-  layout.addWidget(&MKey,6,15,2,2);
+  layout.addWidget(&ShiftKey1,6,0,2,5);
+  layout.addWidget(&ZKey,6,5,2,2);
+  layout.addWidget(&XKey,6,7,2,2);
+  layout.addWidget(&CKey,6,9,2,2);
+  layout.addWidget(&VKey,6,11,2,2);
+  layout.addWidget(&BKey,6,13,2,2);
+  layout.addWidget(&NKey,6,15,2,2);
+  layout.addWidget(&MKey,6,17,2,2);
+  layout.addWidget(&CommaKey,6,19,2,2);
+  layout.addWidget(&PeriodKey,6,21,2,2);
+  layout.addWidget(&ForwSlashKey,6,23,2,2);
+  layout.addWidget(&ShiftKey2,6,25,2,5);
 
-  layout.addWidget(&SpaceKey,8,6,2,10);
-  layout.addWidget(&ShiftKey1,6,0,2,3);
-  layout.addWidget(&ShiftKey2,6,18,2,3);
 
-
+  layout.addWidget(&SpaceKey,8,9,2,12);
 
   this->setLayout(&layout);
 }
 
-KeyboardButton::KeyboardButton(QString letter, QString alt, ShiftSignal &shift):
-  letter(letter),
-  alternate(alt),
-  shift(shift)
-{
-  shiftToggled();
-}
-
-void KeyboardButton::shiftToggled()
-{
-  if(shift.shifted()){
-    this->setText(alternate);
-  } else {
-    this->setText(letter);
-  }
-}
-
-ShiftButton::ShiftButton(QString s1, QString s2, ShiftSignal &shift):
-  KeyboardButton(s1,s2,shift)
-{
-  connect(this, &QPushButton::pressed, this, &ShiftButton::onShift);
-}
-
-void ShiftButton::onShift()
-{
-  shift.toggle();
-}

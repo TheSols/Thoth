@@ -31,3 +31,7 @@ void ShiftSignal::toggle()
     setTrue();
   }
 }
+
+ShiftSignal::~ShiftSignal(){
+
+}
