@@ -5,33 +5,62 @@ ShiftSignal::ShiftSignal(QObject *parent) : QObject(parent)
 
 }
 
-void ShiftSignal::setTrue(){
-  if(shift != true){
-    emit changed(true);
-  }
-  shift = true;
+ShiftSignal::~ShiftSignal(){
+
 }
 
-void ShiftSignal::setFalse(){
-  if(shift != false){
-    emit changed(false);
+void ShiftSignal::shiftTrue(){
+  if(shift != true){
+    shift = true;
+    emit shiftChanged(true);
   }
-  shift = false;
+}
+
+void ShiftSignal::shiftFalse(){
+  if(shift != false){
+    shift = false;
+    emit shiftChanged(false);
+  }
+}
+
+void ShiftSignal::shiftToggle()
+{
+  if (shift){
+    shiftFalse();
+  } else {
+    shiftTrue();
+  }
 }
 
 const bool &ShiftSignal::shifted(){
   return shift;
 }
 
-void ShiftSignal::toggle()
-{
-  if (shift){
-    setFalse();
-  } else {
-    setTrue();
+
+
+void ShiftSignal::capsTrue(){
+  if(caps != true){
+    caps = true;
+    emit capsChanged(true);
   }
 }
 
-ShiftSignal::~ShiftSignal(){
+void ShiftSignal::capsFalse(){
+  if(caps != false){
+    caps = false;
+    emit capsChanged(false);
+  }
+}
 
+void ShiftSignal::capsToggle()
+{
+  if(caps){
+    capsFalse();
+  } else {
+    capsTrue();
+  }
+}
+
+const bool &ShiftSignal::capsed(){
+  return caps;
 }

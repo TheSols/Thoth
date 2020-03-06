@@ -7,17 +7,26 @@ class ShiftSignal : public QObject
 {
   Q_OBJECT
   bool shift = false;
+  bool caps = false;
 
 public:
   ShiftSignal(QObject *parent = nullptr);
-  void setTrue();
-  void setFalse();
+  ~ShiftSignal();
+
+  void shiftTrue();
+  void shiftFalse();
+  void shiftToggle();
   const bool& shifted();
-  void toggle();
-  ~ShiftSignal();;
+
+  void capsTrue();
+  void capsFalse();
+  void capsToggle();
+  const bool& capsed();
 
 signals:
-  void changed(bool shifted);
+  void shiftChanged(bool shifted);
+  void capsChanged(bool capsed);
+
 
 };
 
