@@ -126,3 +126,64 @@ Keyboard::Keyboard(QWidget *parent) :
   this->setLayout(&layout);
 }
 
+void Keyboard::show(QLineEdit &edit)
+{
+  QKey.setTarget(&edit);
+  WKey.setTarget(&edit);
+  EKey.setTarget(&edit);
+  RKey.setTarget(&edit);
+  TKey.setTarget(&edit);
+  YKey.setTarget(&edit);
+  UKey.setTarget(&edit);
+  IKey.setTarget(&edit);
+  OKey.setTarget(&edit);
+  PKey.setTarget(&edit);
+
+  AKey.setTarget(&edit);
+  SKey.setTarget(&edit);
+  DKey.setTarget(&edit);
+  FKey.setTarget(&edit);
+  GKey.setTarget(&edit);
+  HKey.setTarget(&edit);
+  JKey.setTarget(&edit);
+  KKey.setTarget(&edit);
+  LKey.setTarget(&edit);
+
+  ZKey.setTarget(&edit);
+  XKey.setTarget(&edit);
+  CKey.setTarget(&edit);
+  VKey.setTarget(&edit);
+  BKey.setTarget(&edit);
+  NKey.setTarget(&edit);
+  MKey.setTarget(&edit);
+
+  Num1Key.setTarget(&edit);
+  Num2Key.setTarget(&edit);
+  Num3Key.setTarget(&edit);
+  Num4Key.setTarget(&edit);
+  Num5Key.setTarget(&edit);
+  Num6Key.setTarget(&edit);
+  Num7Key.setTarget(&edit);
+  Num8Key.setTarget(&edit);
+  Num9Key.setTarget(&edit);
+  Num0Key.setTarget(&edit);
+  HyphenKey.setTarget(&edit);
+  EqualKey.setTarget(&edit);
+
+  TildeKey.setTarget(&edit);
+  BackspaceKey.setTarget(&edit);
+  CapsKey.setTarget(&edit);
+  CommaKey.setTarget(&edit);
+  PeriodKey.setTarget(&edit);
+  ForwSlashKey.setTarget(&edit);
+  SemiColonKey.setTarget(&edit);
+  QuoteKey.setTarget(&edit);
+  OpenBracketKey.setTarget(&edit);
+  CloseBracketKey.setTarget(&edit);
+  BackSlashKey.setTarget(&edit);
+  EnterKey.setTarget(&edit);
+
+  SpaceKey.setTarget(&edit);
+
+}
+

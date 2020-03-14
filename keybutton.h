@@ -6,6 +6,7 @@
 #include <QGridLayout>
 #include "shiftsignal.h"
 #include <QMouseEvent>
+#include <QLineEdit>
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -16,10 +17,13 @@ protected:
   QString letter;
   QString alternate;
   ShiftSignal &shift;
+  QLineEdit *input = nullptr;
+
   void setHighlight(bool on, bool forShift);
 
 public:
   KeyButton(QString letter, QString alt, ShiftSignal &shift);
+  void setTarget(QLineEdit * lineedit);
   Q_SLOT
   virtual void shiftToggled();
 };

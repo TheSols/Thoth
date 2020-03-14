@@ -11,6 +11,11 @@ KeyButton::KeyButton(QString letter, QString alt, ShiftSignal &shift):
   connect(&shift,&ShiftSignal::shiftChanged, this, &KeyButton::shiftToggled);
 }
 
+void KeyButton::setTarget(QLineEdit *lineedit)
+{
+  input = lineedit;
+}
+
 void KeyButton::shiftToggled()
 {
   if(shift.shifted()){
@@ -59,6 +64,15 @@ void LetterButton::shiftToggled()
 
 void LetterButton::onPressed()
 {
+  if(input){
+    QString text = input->text();
+    int where = input->cursorPosition();
+    text.insert(where,shift.shifted()||shift.capsed()? this->alternate: this->letter);
+    input->setText(text);
+    input->setFocus();
+    input->setCursorPosition(where+1);
+  }
+
   if(shift.locked()){
     //Do Nothing
   } else {
@@ -80,6 +94,15 @@ SymbolButton::SymbolButton(QString letter, QString alt, ShiftSignal &shift):
 
 void SymbolButton::onPressed()
 {
+  if(input){
+    QString text = input->text();
+    int where = input->cursorPosition();
+    text.insert(where,shift.shifted()? this->alternate: this->letter);
+    input->setText(text);
+    input->setFocus();
+    input->setCursorPosition(where+1);
+  }
+
   if(shift.locked()){
     //Do Nothing
   } else {
@@ -101,6 +124,15 @@ NumButton::NumButton(QString letter, QString alt, ShiftSignal &shift):
 
 void NumButton::onPressed()
 {
+  if(input){
+    QString text = input->text();
+    int where = input->cursorPosition();
+    text.insert(where,shift.shifted()? this->alternate: this->letter);
+    input->setText(text);
+    input->setFocus();
+    input->setCursorPosition(where+1);
+  }
+
   if(shift.locked()){
     //Do Nothing
   } else {

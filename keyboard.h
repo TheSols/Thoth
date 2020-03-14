@@ -71,6 +71,7 @@ class Keyboard : public QWidget
 
 public:
   Keyboard(QWidget *parent = nullptr);
+  void show(QLineEdit &edit);
 
 };
 
