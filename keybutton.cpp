@@ -20,10 +20,18 @@ void KeyButton::shiftToggled()
   }
 }
 
-void KeyButton::setHighlight(bool on)
+void KeyButton::setHighlight(bool on, bool forShift)
 {
   if(on){
-    this->setStyleSheet("background: #FF0000");
+    if(forShift){
+      if(shift.locked()){
+        this->setStyleSheet("background: #0000FF");
+      } else {
+        this->setStyleSheet("background: #FF0000");
+      }
+    }else {
+      this->setStyleSheet("background: #FF0000");
+    }
   } else {
     this->setStyleSheet("");
   }
@@ -66,19 +74,9 @@ SymbolButton::SymbolButton(QString letter, QString alt, ShiftSignal &shift):
   KeyButton(letter,alt,shift)
 {
   shiftToggled();
-  connect(&shift,&ShiftSignal::shiftChanged, this, &SymbolButton::shiftToggled);
   connect(this, &QPushButton::pressed, this, &SymbolButton::onPressed);
 }
 
-
-void SymbolButton::shiftToggled()
-{
-  if(shift.capsed() || shift.shifted()){
-    this->setText(alternate);
-  } else {
-    this->setText(letter);
-  }
-}
 
 void SymbolButton::onPressed()
 {
@@ -97,26 +95,18 @@ NumButton::NumButton(QString letter, QString alt, ShiftSignal &shift):
   KeyButton(letter,alt,shift)
 {
   shiftToggled();
-  connect(&shift,&ShiftSignal::capsChanged, this, &NumButton::shiftToggled);
   connect(this, &QPushButton::pressed, this, &NumButton::onPressed);
 }
 
-
-void NumButton::shiftToggled()
-{
-  if(shift.capsed() || shift.shifted()){
-    this->setText(alternate);
-  } else {
-    this->setText(letter);
-  }
-}
 
 void NumButton::onPressed()
 {
   if(shift.locked()){
     //Do Nothing
   } else {
-    //Do Nothing as well
+    if(shift.shifted()){
+      shift.shiftFalse();
+    }
   }
 }
 
@@ -146,9 +136,9 @@ void ShiftButton::mouseDoubleClickEvent(QMouseEvent *) {
 
 void ShiftButton::shiftToggled(){
   if(shift.shifted()){
-    this->setHighlight(true);
+    this->setHighlight(true,true);
   } else {
-    this->setHighlight(false);
+    this->setHighlight(false,true);
   }
 }
 
@@ -164,9 +154,9 @@ void CapsButton::onCaps()
 {
   shift.capsToggle();
   if(shift.capsed()){
-    this->setHighlight(true);
+    this->setHighlight(true,false);
   } else {
-    this->setHighlight(false);
+    this->setHighlight(false,false);
   }
 }
 

@@ -37,6 +37,7 @@ void ShiftSignal::lockTrue()
 {
   lock = true;
   shiftTrue();
+  emit shiftChanged(true); //if shift is true, signal will not emit again, so do it a second time.
 }
 
 void ShiftSignal::lockFalse()
