@@ -5,6 +5,7 @@
 #include <QPushButton>
 #include <QGridLayout>
 #include "shiftsignal.h"
+#include <QMouseEvent>
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -37,6 +38,18 @@ public:
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+class NumButton : public KeyButton{
+  Q_OBJECT
+  void onPressed();
+
+public:
+  NumButton(QString s1, QString s2, ShiftSignal &shift);
+  Q_SLOT
+  void shiftToggled() override;
+};
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 class LetterButton : public KeyButton{
   Q_OBJECT
   void onPressed();
@@ -53,10 +66,19 @@ public:
 class ShiftButton : public KeyButton{
   Q_OBJECT
   void shiftToggled();
+protected:
+  void mouseDoubleClickEvent(QMouseEvent *);
 public:
   ShiftButton(QString s1, QString s2, ShiftSignal &shift);
+
   Q_SLOT
   void onShift();
+  Q_SLOT
+  void shiftLock();
+
+signals:
+  void doubleClicked(bool lock);
+
 };
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////

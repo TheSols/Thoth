@@ -8,6 +8,7 @@ class ShiftSignal : public QObject
   Q_OBJECT
   bool shift = false;
   bool caps = false;
+  bool lock = false;
 
 public:
   ShiftSignal(QObject *parent = nullptr);
@@ -22,6 +23,11 @@ public:
   void capsFalse();
   void capsToggle();
   const bool& capsed();
+
+  void lockTrue();
+  void lockFalse();
+  void lockedToggle();
+  const bool& locked();
 
 signals:
   void shiftChanged(bool shifted);

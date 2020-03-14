@@ -38,16 +38,16 @@ class Keyboard : public QWidget
   LetterButton NKey;
   LetterButton MKey;
 
-  KeyButton Num1Key;
-  KeyButton Num2Key;
-  KeyButton Num3Key;
-  KeyButton Num4Key;
-  KeyButton Num5Key;
-  KeyButton Num6Key;
-  KeyButton Num7Key;
-  KeyButton Num8Key;
-  KeyButton Num9Key;
-  KeyButton Num0Key;
+  NumButton Num1Key;
+  NumButton Num2Key;
+  NumButton Num3Key;
+  NumButton Num4Key;
+  NumButton Num5Key;
+  NumButton Num6Key;
+  NumButton Num7Key;
+  NumButton Num8Key;
+  NumButton Num9Key;
+  NumButton Num0Key;
   SymbolButton HyphenKey;
   SymbolButton EqualKey;
 

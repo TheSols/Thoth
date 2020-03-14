@@ -45,9 +45,9 @@ Keyboard::Keyboard(QWidget *parent) :
   EqualKey("=","+",shift),
 
   TildeKey("`","~",shift),
-  BackspaceKey("BACKSPACE","BACKSPACE",shift),
+  BackspaceKey("Backspace","Backspace",shift),
   TabKey("Tab","Tab",shift),
-  CapsKey("CAPS LOCK","CAPS LOCK",shift),
+  CapsKey("Caps Lock","Caps Lock",shift),
   CommaKey(",","<",shift),
   PeriodKey(".",">",shift),
   ForwSlashKey("/","?",shift),
@@ -56,7 +56,7 @@ Keyboard::Keyboard(QWidget *parent) :
   OpenBracketKey("[","{",shift),
   CloseBracketKey("]","}",shift),
   BackSlashKey("\\","|",shift),
-  EnterKey("ENTER","ENTER",shift),
+  EnterKey("Enter","Enter",shift),
 
   SpaceKey(" "," ",shift),
   ShiftKey1("Shift", "Shift", shift),

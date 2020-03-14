@@ -17,6 +17,7 @@ void ShiftSignal::shiftTrue(){
 }
 
 void ShiftSignal::shiftFalse(){
+  lock = false;
   if(shift != false){
     shift = false;
     emit shiftChanged(false);
@@ -30,6 +31,31 @@ void ShiftSignal::shiftToggle()
   } else {
     shiftTrue();
   }
+}
+
+void ShiftSignal::lockTrue()
+{
+  lock = true;
+  shiftTrue();
+}
+
+void ShiftSignal::lockFalse()
+{
+  shiftFalse();
+}
+
+void ShiftSignal::lockedToggle()
+{
+  if(lock){
+    lockFalse();
+  } else {
+    lockTrue();
+  }
+}
+
+const bool &ShiftSignal::locked()
+{
+  return lock;
 }
 
 const bool &ShiftSignal::shifted(){
