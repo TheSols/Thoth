@@ -193,3 +193,31 @@ void CapsButton::onCaps()
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+BackSpaceButton::BackSpaceButton(ShiftSignal &shift):
+  KeyButton("Backspace","BackSpace",shift)
+{
+  shiftToggled();
+  connect(this, &QPushButton::pressed, this, &BackSpaceButton::onPressed);
+}
+
+
+void BackSpaceButton::onPressed()
+{
+  if(input){
+    QString text = input->text();
+    int where = input->cursorPosition();
+    text.remove(where-1,1);
+    input->setText(text);
+    input->setFocus();
+    input->setCursorPosition(where-1);
+  }
+
+  if(shift.locked()){
+    //Do Nothing
+  } else {
+    if(shift.shifted()){
+      shift.shiftFalse();
+    }
+  }
+}

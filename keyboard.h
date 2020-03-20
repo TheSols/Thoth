@@ -52,7 +52,7 @@ class Keyboard : public QWidget
   SymbolButton EqualKey;
 
   SymbolButton TildeKey;
-  KeyButton BackspaceKey;
+  BackSpaceButton BackspaceKey;
   KeyButton TabKey;
   CapsButton CapsKey;
   SymbolButton CommaKey;

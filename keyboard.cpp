@@ -45,7 +45,7 @@ Keyboard::Keyboard(QWidget *parent) :
   EqualKey("=","+",shift),
 
   TildeKey("`","~",shift),
-  BackspaceKey("Backspace","Backspace",shift),
+  BackspaceKey(shift),
   TabKey("Tab","Tab",shift),
   CapsKey("Caps Lock","Caps Lock",shift),
   CommaKey(",","<",shift),
