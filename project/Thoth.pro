@@ -15,18 +15,20 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
+INCLUDEPATH += ../source/ ../driver/
+
 SOURCES += \
-    keybutton.cpp \
-    main.cpp \
-    mainwindow.cpp \
-    keyboard.cpp \
-    shiftsignal.cpp
+    ../source/keybutton.cpp \
+    ../driver/main.cpp \
+    ../driver/mainwindow.cpp \
+    ../source/keyboard.cpp \
+    ../source/shiftsignal.cpp
 
 HEADERS += \
-    keybutton.h \
-    mainwindow.h \
-    keyboard.h \
-    shiftsignal.h
+    ../source/keybutton.h \
+    ../driver/mainwindow.h \
+    ../source/keyboard.h \
+    ../source/shiftsignal.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
