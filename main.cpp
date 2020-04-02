@@ -4,6 +4,7 @@
 #include "keyboard.h"
 #include <QLineEdit>
 
+/** This is a driver for you to test the keyboard. */
 int main(int argc, char *argv[])
 {
   QApplication a(argc, argv);

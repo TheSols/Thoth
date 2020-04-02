@@ -1,12 +1,13 @@
 #include "shiftsignal.h"
 
-ShiftSignal::ShiftSignal(QObject *parent) : QObject(parent)
+ShiftSignal::ShiftSignal() : QObject(nullptr)
 {
-
+  //All variables initialized in class declaration.
+  //Nothing to do.
 }
 
 ShiftSignal::~ShiftSignal(){
-
+  //Nothing to delete or do.
 }
 
 void ShiftSignal::shiftTrue(){

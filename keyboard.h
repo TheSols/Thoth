@@ -3,7 +3,14 @@
 
 #include "keybutton.h"
 
-
+///////////////////////////////////////////////////////////////////////////////////////////////////
+/// \brief The Keyboard class
+/// The Keyboard Class is my personal keyboard widget that was made using Qt. It offers pretty
+/// basic keyboard functionality but is quite easy to understand and modify for your own purposes.
+///
+/// To use, simply instantiate the keyboard, and then call the show funtion with a QLineEdit as
+/// a parameter.
+///////////////////////////////////////////////////////////////////////////////////////////////////
 class Keyboard : public QWidget
 {
   QGridLayout layout;

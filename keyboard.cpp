@@ -127,8 +127,8 @@ Keyboard::Keyboard(QWidget *parent) :
   layout.addWidget(&ForwSlashKey,6,23,2,2);
   layout.addWidget(&ShiftKey2,6,25,2,5);
 
-  //layout.addWidget(&VKey,8,1,2,2);
-  //layout.addWidget(&VKey,8,3,2,2);
+  //layout.addWidget(&FuncKey,8,1,2,2);
+  //layout.addWidget(&FuncKey,8,3,2,2);
   layout.addWidget(&Clear,8,5,2,2);
   layout.addWidget(&SelectAll,8,7,2,2);
   layout.addWidget(&SpaceKey,8,9,2,12);
@@ -205,5 +205,7 @@ void Keyboard::show(QLineEdit &edit)
   SelectAll.setTarget(&edit);
   Language.setTarget(&edit);
   Accents.setTarget(&edit);
+
+  this->QWidget::show();
 }
 
