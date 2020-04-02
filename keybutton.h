@@ -1,4 +1,4 @@
-#ifndef KEYBUTTON_H
+﻿#ifndef KEYBUTTON_H
 #define KEYBUTTON_H
 
 #include <QWidget>
@@ -29,7 +29,6 @@ public:
 };
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 class SymbolButton : public KeyButton{
   Q_OBJECT
   void onPressed();
@@ -73,13 +72,102 @@ public:
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+class ClearButton : public KeyButton{
+  Q_OBJECT
+  void onPressed();
+
+public:
+  ClearButton(ShiftSignal &shift);
+};
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+class LeftButton : public KeyButton{
+  Q_OBJECT
+  void onPressed();
+
+public:
+  LeftButton(ShiftSignal &shift);
+};
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+class RightButton : public KeyButton{
+  Q_OBJECT
+  void onPressed();
+
+public:
+  RightButton(ShiftSignal &shift);
+};
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+class AllButton : public KeyButton{
+  Q_OBJECT
+  void onPressed();
+
+public:
+  AllButton(ShiftSignal &shift);
+};
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+class LanguageButton : public KeyButton{
+  Q_OBJECT
+  void onPressed();
+
+public:
+  LanguageButton(ShiftSignal &shift);
+};
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+class AccentButton : public KeyButton{
+  Q_OBJECT
+  void onPressed();
+
+public:
+  AccentButton(ShiftSignal &shift);
+};
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+class TabButton : public KeyButton{
+  Q_OBJECT
+  void onPressed();
+
+public:
+  TabButton(ShiftSignal &shift);
+};
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+class SpaceButton : public KeyButton{
+  Q_OBJECT
+  void onPressed();
+
+public:
+  SpaceButton(ShiftSignal &shift);
+};
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+class EnterButton : public KeyButton{
+  Q_OBJECT
+  void onPressed();
+
+public:
+  EnterButton(ShiftSignal &shift);
+};
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class ShiftButton : public KeyButton{
   Q_OBJECT
   void shiftToggled();
 protected:
   void mouseDoubleClickEvent(QMouseEvent *);
 public:
-  ShiftButton(QString s1, QString s2, ShiftSignal &shift);
+  ShiftButton(ShiftSignal &shift);
 
   Q_SLOT
   void onShift();
@@ -96,7 +184,7 @@ signals:
 class CapsButton : public KeyButton{
   Q_OBJECT
 public:
-  CapsButton(QString s1, QString s2, ShiftSignal &shift);
+  CapsButton(ShiftSignal &shift);
   Q_SLOT
   void onCaps();
 };

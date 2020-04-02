@@ -46,8 +46,8 @@ Keyboard::Keyboard(QWidget *parent) :
 
   TildeKey("`","~",shift),
   BackspaceKey(shift),
-  TabKey("Tab","Tab",shift),
-  CapsKey("Caps Lock","Caps Lock",shift),
+  TabKey(shift),
+  CapsKey(shift),
   CommaKey(",","<",shift),
   PeriodKey(".",">",shift),
   ForwSlashKey("/","?",shift),
@@ -56,11 +56,18 @@ Keyboard::Keyboard(QWidget *parent) :
   OpenBracketKey("[","{",shift),
   CloseBracketKey("]","}",shift),
   BackSlashKey("\\","|",shift),
-  EnterKey("Enter","Enter",shift),
+  EnterKey(shift),
 
-  SpaceKey(" "," ",shift),
-  ShiftKey1("Shift", "Shift", shift),
-  ShiftKey2("Shift", "Shift", shift)
+  SpaceKey(shift),
+  ShiftKey1(shift),
+  ShiftKey2(shift),
+
+  Clear(shift),
+  Left(shift),
+  Right(shift),
+  SelectAll(shift),
+  Language(shift),
+  Accents(shift)
 
 {
   layout.addWidget(&TildeKey,0,0,2,2);
@@ -120,8 +127,15 @@ Keyboard::Keyboard(QWidget *parent) :
   layout.addWidget(&ForwSlashKey,6,23,2,2);
   layout.addWidget(&ShiftKey2,6,25,2,5);
 
-
+  //layout.addWidget(&VKey,8,1,2,2);
+  //layout.addWidget(&VKey,8,3,2,2);
+  layout.addWidget(&Clear,8,5,2,2);
+  layout.addWidget(&SelectAll,8,7,2,2);
   layout.addWidget(&SpaceKey,8,9,2,12);
+  layout.addWidget(&Left,8,21,2,2);
+  layout.addWidget(&Right,8,23,2,2);
+  layout.addWidget(&Accents,8,25,2,2);
+  layout.addWidget(&Language,8,27,2,3);
 
   this->setLayout(&layout);
 }
@@ -185,5 +199,11 @@ void Keyboard::show(QLineEdit &edit)
 
   SpaceKey.setTarget(&edit);
 
+  Clear.setTarget(&edit);
+  Left.setTarget(&edit);
+  Right.setTarget(&edit);
+  SelectAll.setTarget(&edit);
+  Language.setTarget(&edit);
+  Accents.setTarget(&edit);
 }
 

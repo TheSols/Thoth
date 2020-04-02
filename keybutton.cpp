@@ -144,8 +144,8 @@ void NumButton::onPressed()
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-ShiftButton::ShiftButton(QString s1, QString s2, ShiftSignal &shift):
-  KeyButton(s1,s2,shift)
+ShiftButton::ShiftButton(ShiftSignal &shift):
+  KeyButton("Shift", "Shift",shift)
 {
   connect(this, &QPushButton::pressed, this, &ShiftButton::onShift);
   connect(&shift,&ShiftSignal::capsChanged, this, &ShiftButton::shiftToggled);
@@ -176,8 +176,8 @@ void ShiftButton::shiftToggled(){
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-CapsButton::CapsButton(QString s1, QString s2, ShiftSignal &shift):
-  KeyButton(s1,s2,shift)
+CapsButton::CapsButton(ShiftSignal &shift):
+  KeyButton("Caps Lock", "Caps Lock",shift)
 {
   connect(this, &QPushButton::pressed, this, &CapsButton::onCaps);
 }
@@ -205,12 +205,8 @@ BackSpaceButton::BackSpaceButton(ShiftSignal &shift):
 void BackSpaceButton::onPressed()
 {
   if(input){
-    QString text = input->text();
-    int where = input->cursorPosition();
-    text.remove(where-1,1);
-    input->setText(text);
+    input->backspace();
     input->setFocus();
-    input->setCursorPosition(where-1);
   }
 
   if(shift.locked()){
@@ -221,3 +217,248 @@ void BackSpaceButton::onPressed()
     }
   }
 }
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+EnterButton::EnterButton(ShiftSignal &shift):
+  KeyButton("Enter","Enter",shift)
+{
+  shiftToggled();
+  connect(this, &QPushButton::pressed, this, &EnterButton::onPressed);
+}
+
+
+void EnterButton::onPressed()
+{
+  if(input){
+    input->setFocus();
+    emit input->returnPressed();
+  }
+
+  if(shift.locked()){
+    //Do Nothing
+  } else {
+    if(shift.shifted()){
+      shift.shiftFalse();
+    }
+  }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+ClearButton::ClearButton(ShiftSignal &shift):
+  KeyButton("Clear","Clear",shift)
+{
+  shiftToggled();
+  connect(this, &QPushButton::pressed, this, &ClearButton::onPressed);
+}
+
+
+void ClearButton::onPressed()
+{
+  if(input){
+    input->clear();
+    input->setFocus();
+  }
+
+  if(shift.locked()){
+    //Do Nothing
+  } else {
+    if(shift.shifted()){
+      shift.shiftFalse();
+    }
+  }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+LeftButton::LeftButton(ShiftSignal &shift):
+  KeyButton("\u2190","\u2190",shift)
+{
+  shiftToggled();
+  connect(this, &QPushButton::pressed, this, &LeftButton::onPressed);
+}
+
+
+void LeftButton::onPressed()
+{
+  if(input){
+    int where = input->cursorPosition();
+    input->setCursorPosition(where-1);
+    input->setFocus();
+  }
+
+  if(shift.locked()){
+    //Do Nothing
+  } else {
+    if(shift.shifted()){
+      shift.shiftFalse();
+    }
+  }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+RightButton::RightButton(ShiftSignal &shift):
+  KeyButton("\u2192","\u2192",shift)
+{
+  shiftToggled();
+  connect(this, &QPushButton::pressed, this, &RightButton::onPressed);
+}
+
+
+void RightButton::onPressed()
+{
+  if(input){
+    int where = input->cursorPosition();
+    input->setCursorPosition(where+1);
+    input->setFocus();
+  }
+
+  if(shift.locked()){
+    //Do Nothing
+  } else {
+    if(shift.shifted()){
+      shift.shiftFalse();
+    }
+  }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+AllButton::AllButton(ShiftSignal &shift):
+  KeyButton("Select All","Select All",shift)
+{
+  shiftToggled();
+  connect(this, &QPushButton::pressed, this, &AllButton::onPressed);
+}
+
+
+void AllButton::onPressed()
+{
+  if(input){
+    input->selectAll();
+    input->setFocus();
+  }
+
+  if(shift.locked()){
+    //Do Nothing
+  } else {
+    if(shift.shifted()){
+      shift.shiftFalse();
+    }
+  }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+LanguageButton::LanguageButton(ShiftSignal &shift):
+  KeyButton("Language","Language",shift)
+{
+  shiftToggled();
+  connect(this, &QPushButton::pressed, this, &LanguageButton::onPressed);
+}
+
+
+void LanguageButton::onPressed()
+{
+  if(input){
+    input->setFocus();
+  }
+
+  if(shift.locked()){
+    //Do Nothing
+  } else {
+    if(shift.shifted()){
+      shift.shiftFalse();
+    }
+  }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+AccentButton::AccentButton(ShiftSignal &shift):
+  KeyButton("Accent","Accent",shift)
+{
+  shiftToggled();
+  connect(this, &QPushButton::pressed, this, &AccentButton::onPressed);
+}
+
+
+void AccentButton::onPressed()
+{
+  if(input){
+    input->setFocus();
+  }
+
+  if(shift.locked()){
+    //Do Nothing
+  } else {
+    if(shift.shifted()){
+      shift.shiftFalse();
+    }
+  }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+TabButton::TabButton(ShiftSignal &shift):
+  KeyButton("Tab","Tab",shift)
+{
+  shiftToggled();
+  connect(this, &QPushButton::pressed, this, &TabButton::onPressed);
+}
+
+
+void TabButton::onPressed()
+{
+  if(input){
+    QString text = input->text();
+    int where = input->cursorPosition();
+    text.insert(where,"    ");
+    input->setText(text);
+    input->setFocus();
+    input->setCursorPosition(where+4);
+  }
+
+  if(shift.locked()){
+    //Do Nothing
+  } else {
+    if(shift.shifted()){
+      shift.shiftFalse();
+    }
+  }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+SpaceButton::SpaceButton(ShiftSignal &shift):
+  KeyButton(" "," ",shift)
+{
+  shiftToggled();
+  connect(this, &QPushButton::pressed, this, &SpaceButton::onPressed);
+}
+
+
+void SpaceButton::onPressed()
+{
+  if(input){
+    QString text = input->text();
+    int where = input->cursorPosition();
+    text.insert(where," ");
+    input->setText(text);
+    input->setFocus();
+    input->setCursorPosition(where+1);
+  }
+
+  if(shift.locked()){
+    //Do Nothing
+  } else {
+    if(shift.shifted()){
+      shift.shiftFalse();
+    }
+  }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////

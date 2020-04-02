@@ -53,7 +53,7 @@ class Keyboard : public QWidget
 
   SymbolButton TildeKey;
   BackSpaceButton BackspaceKey;
-  KeyButton TabKey;
+  TabButton TabKey;
   CapsButton CapsKey;
   SymbolButton CommaKey;
   SymbolButton PeriodKey;
@@ -63,11 +63,18 @@ class Keyboard : public QWidget
   SymbolButton OpenBracketKey;
   SymbolButton CloseBracketKey;
   SymbolButton BackSlashKey;
-  SymbolButton EnterKey;
+  EnterButton EnterKey;
 
-  KeyButton SpaceKey;
+  SpaceButton SpaceKey;
   ShiftButton ShiftKey1;
   ShiftButton ShiftKey2;
+
+  ClearButton Clear;
+  LeftButton Left;
+  RightButton Right;
+  AllButton SelectAll;
+  LanguageButton Language;
+  AccentButton Accents;
 
 public:
   Keyboard(QWidget *parent = nullptr);
